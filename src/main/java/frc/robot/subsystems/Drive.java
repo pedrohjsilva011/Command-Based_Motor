@@ -37,9 +37,4 @@ public class Drive extends SubsystemBase {
         R_Motor.setNeutralMode(NeutralMode.Brake);
         R_Motor2.setNeutralMode(NeutralMode.Brake);
     }
-
-    public void setDefaultCommand(Locomotion locomotion) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDefaultCommand'");
-    }
 }

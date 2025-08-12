@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drive;
 import frc.robot.Calc.Speed;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Locomotion extends Command {
     private final Drive driveSubsystem;
@@ -33,6 +34,7 @@ public class Locomotion extends Command {
     public void execute() {
         button();
         MainControl();
+        SmartDashboard();
     }
 
     private void setSpeed(double leftSpeed, double rightSpeed) {
@@ -83,6 +85,18 @@ public class Locomotion extends Command {
             return;
         }
         setSpeed(speeds.m_left, speeds.m_right);
+    }
+
+    public void SmartDashboard() {
+        if (speeds != null) {
+            SmartDashboard.putNumber("Velocidade Esquerda", speeds.m_left);
+            SmartDashboard.putNumber("Velocidade Direita", speeds.m_right);
+        } else {
+            SmartDashboard.putNumber("Velocidade Esquerda", 0);
+            SmartDashboard.putNumber("Velocidade Direita", 0);
+        }
+        
+        SmartDashboard.putNumber("Multiplicador", multiplier);
     }
 
     @Override

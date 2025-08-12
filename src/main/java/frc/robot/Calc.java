@@ -48,8 +48,8 @@ public class Calc {
     }
 
     public static Speed calculateRightAnalogic(Joystick joystick, double multiplier) {
-        double right_X = joystick.getX();
-        double right_Y = joystick.getY();
+        double right_X = joystick.getRawAxis(Constants.right_X);
+        double right_Y = joystick.getRawAxis(Constants.right_Y);
 
         double magnitudeR = Math.hypot(right_X, right_Y);
         if (magnitudeR < Constants.deadZone) return new Speed(0, 0);
@@ -62,35 +62,35 @@ public class Calc {
 
         if (right_X > 0 && right_Y < 0) {
             // Quadrante 1
-            rightSpeed = magnitudeR * multiplier;
+            leftSpeed = magnitudeR * multiplier;
             rightSpeed = ((2 * right_sen + 1) * magnitudeR * -1) * multiplier;
         } else if (right_X < -0 && right_Y < -0) {
             // Quadrante 2
-            rightSpeed = ((2 * right_sen + 1) * -1) * magnitudeR * multiplier;
+            leftSpeed = ((2 * right_sen + 1) * -1) * magnitudeR * multiplier;
             rightSpeed = magnitudeR * multiplier;
         } else if (right_X < -0 && right_Y > 0) {
             // Quadrante 3
-            rightSpeed = magnitudeR * multiplier * -1;
+            leftSpeed = magnitudeR * multiplier * -1;
             rightSpeed = ((2 * right_sen - 1) * -1) * magnitudeR * multiplier;
         } else if (right_X > 0 && right_Y > 0) {
             // Quadrante 4
-            rightSpeed = ((2 * right_sen - 1) * -1) * magnitudeR * multiplier;
+            leftSpeed = ((2 * right_sen - 1) * -1) * magnitudeR * multiplier;
             rightSpeed = magnitudeR * multiplier * -1;
         }
-        return new Speed(leftSpeed, rightSpeed);
+        return new Speed(leftSpeed, rightSpeed * -1);
     }
 
     public static Speed calculateTrigger(Joystick joystick, double multiplier) {
-        int L_Trigger = Constants.L_Trigger;
-        int R_Trigger = Constants.R_Trigger;
+        double LTrigger = joystick.getRawAxis(Constants.L_Trigger);
+        double RTrigger = joystick.getRawAxis(Constants.R_Trigger);
 
-        if (R_Trigger > Constants.deadZone) {
-            double speed = R_Trigger * multiplier;
+        if (RTrigger > Constants.deadZone) {
+            double speed = RTrigger * multiplier;
             return new Speed(speed, speed);
-        } else if (L_Trigger > Constants.deadZone) {
-            double speed = L_Trigger * multiplier;
+        } else if (LTrigger > Constants.deadZone) {
+            double speed = LTrigger * multiplier * -1;
             return new Speed(speed, speed);
-        } else if (R_Trigger < Constants.deadZone && L_Trigger < Constants.deadZone) {
+        } else if (RTrigger < Constants.deadZone && LTrigger < Constants.deadZone) {
             return new Speed(0, 0);
         }
 
