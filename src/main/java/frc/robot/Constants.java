@@ -13,6 +13,6 @@ public final class Constants {
   public static int button_A = 1;
   public static int button_B = 2;
   public static int button_X = 3;
-  public static int right_X = 5;
-  public static int right_Y = 4;
+  public static int right_X = 4;
+  public static int right_Y = 5;
 }

@@ -1,6 +1,9 @@
 package frc.robot.commands;
 
 import frc.robot.Calc;
+
+import java.nio.channels.Pipe.SourceChannel;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -75,10 +78,12 @@ public class Locomotion extends Command {
             speeds = Calc.calculateTrigger(joystick, multiplier);
         } else if (POV != Constants.povDeadZone) {
             speeds = Calc.calculatePOV(joystick, multiplier);
-        } else if (left_X > Constants.deadZone || left_X < -Constants.deadZone || left_Y > Constants.deadZone || left_Y < -Constants.deadZone) {
+        } else if (left_X >= Constants.deadZone || left_X < -Constants.deadZone || left_Y >= Constants.deadZone || left_Y < -Constants.deadZone) {
             speeds = Calc.calculateLeftAnalogic(joystick, multiplier);
-        } else if (right_X > Constants.deadZone || right_X < -Constants.deadZone || right_Y > Constants.deadZone || right_Y < -Constants.deadZone) {
+            System.out.println("Analogico esquerdo fununciando");
+        } else if (right_X >= Constants.deadZone || right_X < -Constants.deadZone || right_Y >= Constants.deadZone || right_Y < -Constants.deadZone) {
             speeds = Calc.calculateRightAnalogic(joystick, multiplier);
+            System.out.println("Analógico direito fununciando");
         } else {
             speeds = new Speed(0, 0);
             stop();

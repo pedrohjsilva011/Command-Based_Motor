@@ -27,7 +27,7 @@ public class Calc {
         double leftSpeed = 0;
         double rightSpeed = 0;
 
-        if (left_X > 0 && left_Y < 0) {
+        if (left_X >= 0 && left_Y < 0) {
         // Quadrante 1
         leftSpeed = magnitudeL * multiplier;
         rightSpeed = ((2 * left_sen + 1) * magnitudeL * -1) * multiplier;
@@ -39,7 +39,7 @@ public class Calc {
         // Quadrante 3
         leftSpeed = magnitudeL * multiplier * -1;
         rightSpeed = ((2 * left_sen - 1) * -1) * magnitudeL * multiplier;
-        } else if (left_X > 0 && left_Y > 0) {
+        } else if (left_X >= 0 && left_Y > 0) {
         // Quadrante 4
         leftSpeed = ((2 * left_sen - 1) * -1) * magnitudeL * multiplier;
         rightSpeed = magnitudeL * multiplier * -1;
@@ -60,7 +60,7 @@ public class Calc {
         double leftSpeed = 0;
         double rightSpeed = 0;
 
-        if (right_X > 0 && right_Y < 0) {
+        if (right_X >= 0 && right_Y < 0) {
             // Quadrante 1
             leftSpeed = magnitudeR * multiplier;
             rightSpeed = ((2 * right_sen + 1) * magnitudeR * -1) * multiplier;
@@ -72,12 +72,12 @@ public class Calc {
             // Quadrante 3
             leftSpeed = magnitudeR * multiplier * -1;
             rightSpeed = ((2 * right_sen - 1) * -1) * magnitudeR * multiplier;
-        } else if (right_X > 0 && right_Y > 0) {
+        } else if (right_X >= 0 && right_Y > 0) {
             // Quadrante 4
             leftSpeed = ((2 * right_sen - 1) * -1) * magnitudeR * multiplier;
             rightSpeed = magnitudeR * multiplier * -1;
         }
-        return new Speed(leftSpeed, rightSpeed * -1);
+        return new Speed(leftSpeed * -1, rightSpeed * -1);
     }
 
     public static Speed calculateTrigger(Joystick joystick, double multiplier) {
