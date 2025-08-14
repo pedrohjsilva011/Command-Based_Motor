@@ -2,8 +2,6 @@ package frc.robot.commands;
 
 import frc.robot.Calc;
 
-import java.nio.channels.Pipe.SourceChannel;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
