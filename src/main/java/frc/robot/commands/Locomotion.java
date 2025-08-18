@@ -78,10 +78,8 @@ public class Locomotion extends Command {
             speeds = Calc.calculatePOV(joystick, multiplier);
         } else if (left_X >= Constants.deadZone || left_X < -Constants.deadZone || left_Y >= Constants.deadZone || left_Y < -Constants.deadZone) {
             speeds = Calc.calculateLeftAnalogic(joystick, multiplier);
-            System.out.println("Analogico esquerdo fununciando");
         } else if (right_X >= Constants.deadZone || right_X < -Constants.deadZone || right_Y >= Constants.deadZone || right_Y < -Constants.deadZone) {
             speeds = Calc.calculateRightAnalogic(joystick, multiplier);
-            System.out.println("Analógico direito fununciando");
         } else {
             speeds = new Speed(0, 0);
             stop();
