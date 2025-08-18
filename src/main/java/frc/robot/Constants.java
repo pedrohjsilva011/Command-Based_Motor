@@ -5,6 +5,8 @@ public final class Constants {
   public static int L_Motor2 = 4;
   public static int R_Motor = 2;
   public static int R_Motor2 = 1;
+  public static int Encoder_A = 0;
+  public static int Encoder_B = 1;
   public static int controller = 0;
   public static double deadZone = 0.04;
   public static int L_Trigger = 2;
