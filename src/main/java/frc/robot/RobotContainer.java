@@ -14,6 +14,13 @@ public class RobotContainer {
   public RobotContainer() {
     drivesubsystem.setDefaultCommand(new Locomotion(drivesubsystem, joystick));
     autonomo = new Autonomous(drivesubsystem);
-    
+  }
+
+  public Autonomous getAutonomousCommand() {
+    return autonomo;
+  }
+
+  public Drive getDrive() {
+    return drivesubsystem;
   }
 }
