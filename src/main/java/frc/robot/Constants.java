@@ -17,4 +17,7 @@ public final class Constants {
   public static int button_X = 3;
   public static int right_X = 4;
   public static int right_Y = 5;
+  public static final int kArmMotorCanId = 5;
+  public static final double kArmUpSpeed = 0.7;
+  public static final double kArmDownSpeed = -0.5;
 }
