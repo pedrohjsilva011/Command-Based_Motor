@@ -2,12 +2,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Drive;
+
+import org.w3c.dom.ls.LSParser;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Autonomous extends Command {
     private Drive drive = new Drive();
     private final Timer timer = new Timer();
+    private double LSpeed = 0;
+    private double RSpeed = 0;
     
     public Autonomous(Drive drive) {
         this.drive = drive;
@@ -18,22 +24,24 @@ public class Autonomous extends Command {
     public void initialize() {
         timer.reset();
         timer.start();
-        setSpeed(0.5, 0.5);
+        LSpeed = 0.5;
+        RSpeed = 0.5;
+        setSpeed(LSpeed, RSpeed);
     }
 
     public void TimerSystem() {
-        timer.start();
         if (timer.get() > 1) {
             timer.stop();
             stop();
         } else {
-            setSpeed(0.5, 0.5);
+            setSpeed(LSpeed, RSpeed);
         }
     }
 
     @Override
     public void execute() {
         TimerSystem();
+        SmartDashboard();
     }
 
     public void setSpeed(double leftSpeed, double rightSpeed) {
@@ -45,6 +53,11 @@ public class Autonomous extends Command {
 
     public void stop() {
         setSpeed(0, 0);
+    }
+
+    public void SmartDashboard() {
+        SmartDashboard.putNumber("Velocidade Esquerda", LSpeed);
+        SmartDashboard.putNumber("Velocidade Direita", RSpeed);        
     }
 
     @Override
