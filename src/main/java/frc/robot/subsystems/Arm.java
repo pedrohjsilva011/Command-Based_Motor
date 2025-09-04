@@ -10,18 +10,14 @@ public class Arm extends SubsystemBase {
 
     
     public Arm() {
-        // Inicializa o motor SparkMAX com o ID 5
         armMotor = new SparkMax(Constants.kArmMotorCanId, MotorType.kBrushless);
     }
 
     @Override
-    public void periodic() {
-        // Este método é chamado uma vez por ciclo do Scheduler
-    }
+    public void periodic() {}
 
     /**
-     * Define a velocidade do motor do braço.
-     * @param speed A velocidade a ser aplicada, de -1.0 a 1.0.
+     * @param speed
      */
     public void setArmSpeed(double speed) {
         armMotor.set(speed);
