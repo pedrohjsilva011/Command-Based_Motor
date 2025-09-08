@@ -8,7 +8,7 @@ import frc.robot.commands.ArmControl;
 import frc.robot.commands.Locomotion;
 import frc.robot.commands.Autonomous;
 
-public class RobotContainer {
+public class RobotContainer { 
   
   private final Drive drivesubsystem = new Drive();
   private final Autonomous autonomo;
