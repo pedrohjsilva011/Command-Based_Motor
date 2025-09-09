@@ -15,7 +15,7 @@ public class Autonomous extends Command {
     private double RSpeed = 0;
 
     // === NOVO: sensor infravermelho no DIO 0 (ajuste conforme sua ligação) ===
-    private final DigitalInput irSensor = new DigitalInput(0);
+    private final DigitalInput irSensor = new DigitalInput(9);
 
     // === NOVO: máquina de estados do desvio ===
     private enum IRState { IDLE, REVERSING, TURNING, FORWARD_RECOVER }
@@ -26,10 +26,10 @@ public class Autonomous extends Command {
     private static final double IR_REVERSE_SEC = 0.5;
     private static final double IR_TURN_SEC = 0.7;
     private static final double IR_FORWARD_SEC = 1.0;
-    private static final double FWD_SPEED = 0.5;
-    private static final double REV_SPEED = -0.4;
-    private static final double TURN_LEFT = 0.4;
-    private static final double TURN_RIGHT = -0.4;
+    private static final double FWD_SPEED = 0.25;
+    private static final double REV_SPEED = -0.25;
+    private static final double TURN_LEFT = 0.25;
+    private static final double TURN_RIGHT = -0.25;
 
     public Autonomous(Drive drive) {
         this.drive = drive;
