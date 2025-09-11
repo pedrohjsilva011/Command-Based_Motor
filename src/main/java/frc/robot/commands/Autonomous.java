@@ -65,6 +65,8 @@ public class Autonomous extends Command {
         boolean obstacle = !irSensor.get();
         double now = timer.get();
 
+        System.out.println("Distância: " + drive.getDistance());
+
         // === prioridade: rotina de desvio ===
         if (irState != IRState.IDLE) {
             switch (irState) {
