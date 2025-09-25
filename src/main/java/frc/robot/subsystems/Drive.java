@@ -15,7 +15,7 @@ public class Drive extends SubsystemBase {
     // ======================
     // Encoder (apenas 1 lado)
     // ======================
-    private final Encoder driveEncoder = new Encoder(0, 1);
+    private final Encoder driveEncoder = new Encoder(5, 4);
 
     private static final int countsPerRevolution = 2048;
     private static final double wheelDiameter = 0.06;

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class Autonomous extends Command {
-    private Drive drive = new Drive();
+    private final Drive drive;
     private final Timer timer = new Timer();
     private double LSpeed = 0;
     private double RSpeed = 0;
@@ -40,8 +40,8 @@ public class Autonomous extends Command {
     public void initialize() {
         timer.reset();
         timer.start();
-        LSpeed = 0.5;
-        RSpeed = 0.5;
+        LSpeed = 0.25;
+        RSpeed = 0.25;
         setSpeed(LSpeed, RSpeed);
 
         irState = IRState.IDLE;
